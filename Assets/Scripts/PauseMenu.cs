@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0;
         Debug.Log("Pause menu is enabled and time scale is set to 0");
+        //add pause function for audio listener too
     }
 
 }
