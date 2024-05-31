@@ -22,10 +22,8 @@ public class ResumeButton : MonoBehaviour
         }
     }
 
-    void ResumeGame()
+    private void ResumeGame()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1;
-        Debug.Log("Resume Game functin is called and time scale set to 1");
     }
 }

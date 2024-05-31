@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
@@ -20,7 +19,7 @@ public class SceneManager : MonoBehaviour
     }
 
     public SceneState currentState;
-    
+
     void Awake()
     {
         SingletonCheck();
@@ -51,7 +50,6 @@ public class SceneManager : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// This function loads scenes. Simply provide a scene as a parameter.
     /// </summary>
@@ -71,7 +69,7 @@ public class SceneManager : MonoBehaviour
     /// This function loads the scene asynchronously. Could be useful to display some loading screen.
     /// </summary>
     /// <returns></returns>
-    IEnumerator LoadSceneAsync(string sceneName)
+    public IEnumerator LoadSceneAsync(string sceneName)
     {
         AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
 
