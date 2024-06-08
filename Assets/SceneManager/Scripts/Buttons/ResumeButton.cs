@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ResumeButton : MonoBehaviour
 {
-
-
     public GameObject pauseMenu;
+    public MenuController menuController;
 
-    void Awake()
+    void Start()
     {
         Button button = GetComponent<Button>();
         if (button != null)
@@ -24,6 +21,13 @@ public class ResumeButton : MonoBehaviour
 
     private void ResumeGame()
     {
-        pauseMenu.SetActive(false);
+        if (menuController != null)
+        {
+            menuController.ResumeGame();
+        }
+        else
+        {
+            Debug.LogError("MenuController not found on pauseMenu object.");
+        }
     }
 }

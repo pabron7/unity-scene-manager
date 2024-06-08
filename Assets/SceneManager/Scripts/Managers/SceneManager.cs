@@ -40,12 +40,18 @@ public class SceneManager : MonoBehaviour
         {
             case SceneState.StartMenu:
                 LoadScene("StartMenu");
+                MusicManager.Instance.SelectPlaylist("StartMenu");
+                UnlockCursor();
                 break;
             case SceneState.Gameplay:
                 LoadScene("Gameplay");
+                MusicManager.Instance.SelectPlaylist("Gameplay");
+                SoundManager.Instance.PlayOneShotSound("mrSandmanNarrative");
                 break;
             case SceneState.EndScene:
                 LoadScene("EndScene");
+                MusicManager.Instance.SelectPlaylist("EndScene");
+                UnlockCursor();
                 break;
         }
     }
@@ -96,7 +102,21 @@ public class SceneManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }
+
+
 
 /// <summary>
 /// Scenes data, hard coded

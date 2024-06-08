@@ -3,13 +3,12 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField]
-    public GameObject pauseMenu;
+    private GameObject pauseMenu;
     [SerializeField]
-    public GameObject consoleMenu;
+    private GameObject consoleMenu;
 
     private bool isConsoleOn;
     private bool isPauseOn;
-
 
     void Update()
     {
@@ -20,26 +19,56 @@ public class MenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isPauseOn) { isPauseOn = true; }
-            else { isPauseOn = false; }
+            isPauseOn = !isPauseOn;
         }
 
         if (Input.GetButtonDown("Console"))
         {
-
-            if (!isConsoleOn) { isConsoleOn = true; }
-            else { isConsoleOn = false; }
+            isConsoleOn = !isConsoleOn;
         }
+
         UpdateMenu();
     }
 
     private void UpdateMenu()
     {
-        if (isPauseOn) { pauseMenu.SetActive(true); }
-        else { pauseMenu.SetActive(false); }
+        if (isPauseOn || isConsoleOn)
+        {
+            pauseMenu.SetActive(isPauseOn);
+            consoleMenu.SetActive(isConsoleOn);
+            UnlockCursor();
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            pauseMenu.SetActive(false);
+            consoleMenu.SetActive(false);
+            LockCursor();
+            Time.timeScale = 1f;
+        }
+    }
 
-        if(isConsoleOn) { consoleMenu.SetActive(true); }
-        else { consoleMenu.SetActive(false); }
+    public void ResumeGame()
+    {
+        isPauseOn = false;
+        UpdateMenu();
+    }
+
+    private void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void OnDisable()
+    {
+        LockCursor();
+        Time.timeScale = 1f;
     }
 }
-

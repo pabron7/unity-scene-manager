@@ -148,6 +148,28 @@ public class MusicManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Plays the song at the given index in the current playlist.
+    /// </summary>
+    /// <param name="index"></param>
+    public void PlaySongAtIndex(int index)
+    {
+        if (currentPlaylist != null && index >= 0 && index < currentPlaylist.Count)
+        {
+            currentTrackIndex = index;
+            audioSource.clip = currentPlaylist[currentTrackIndex];
+            audioSource.Play();
+            isPlaying = true;
+            currentTrackIndex = (currentTrackIndex + 1) % currentPlaylist.Count;
+            StopAllCoroutines();
+            StartCoroutine(WaitForTrackToEnd());
+        }
+        else
+        {
+            Debug.LogError("Invalid index or playlist is empty.");
+        }
+    }
+
+    /// <summary>
     /// Singleton pattern checker method.
     /// </summary>
     private void SingletonCheck()
