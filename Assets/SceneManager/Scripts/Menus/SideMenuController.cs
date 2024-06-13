@@ -54,7 +54,8 @@ public class SideMenuController : MonoBehaviour
                 case Contents.Options:
                     creditsContent.SetActive(false);
                     controlsContent.SetActive(false);
-                    if (optionsContent != null) optionsContent.SetActive(true);
+                    if (optionsContent != null) optionsContent.SetActive(true); MusicManager.Instance.UpdateUIElements(); SoundManager.Instance.UpdateUIElements();
+
                     break;
             }
         }

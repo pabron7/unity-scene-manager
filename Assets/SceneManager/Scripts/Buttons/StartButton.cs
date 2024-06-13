@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StartButton : MonoBehaviour
 {
+    public GameScenes Scenes;
+
     void Start()
     {
         Button button = GetComponent<Button>();
@@ -20,6 +20,31 @@ public class StartButton : MonoBehaviour
 
     public void OnStartGame()
     {
-        SceneManager.Instance.UpdateGameState(SceneState.Gameplay);
+        switch (Scenes)
+        {
+            case GameScenes.Gameplay:
+                SceneManager.Instance.UpdateGameState(SceneState.Gameplay);
+                break;
+            case GameScenes.Tutorial:
+                SceneManager.Instance.UpdateGameState(SceneState.Tutorial);
+                break;
+            case GameScenes.LevelSelect:
+                SceneManager.Instance.UpdateGameState(SceneState.LevelSelect);
+                break;
+            case GameScenes.Gameplay1:
+                SceneManager.Instance.UpdateGameState(SceneState.Gameplay1);
+                break;
+            case GameScenes.Gameplay2:
+                SceneManager.Instance.UpdateGameState(SceneState.Gameplay2);
+                break;
+        }
+
     }
+}
+public enum GameScenes
+{
+    Gameplay,
+    Tutorial,
+    LevelSelect,
+    Gameplay1, Gameplay2
 }

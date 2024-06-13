@@ -53,6 +53,20 @@ public class SceneManager : MonoBehaviour
                 MusicManager.Instance.SelectPlaylist("EndScene");
                 UnlockCursor();
                 break;
+            case SceneState.LevelSelect:
+                LoadScene("LevelSelect");
+                UnlockCursor();
+                break;
+            case SceneState.Tutorial:
+                LoadScene("Tutorial");
+                UnlockCursor();
+                break;
+            case SceneState.Gameplay1:
+                LoadScene("Gameplay 2");
+                break;
+            case SceneState.Gameplay2:
+                LoadScene("Gameplay 3");
+                break;
         }
     }
 
@@ -116,8 +130,6 @@ public class SceneManager : MonoBehaviour
     }
 }
 
-
-
 /// <summary>
 /// Scenes data, hard coded
 /// </summary>
@@ -125,5 +137,8 @@ public enum SceneState
 {
     StartMenu,
     Gameplay,
-    EndScene
+    Tutorial,
+    EndScene,
+    LevelSelect,
+    Gameplay1, Gameplay2
 }

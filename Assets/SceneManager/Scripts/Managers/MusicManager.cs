@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicManager : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class MusicManager : MonoBehaviour
     private List<AudioClip> currentPlaylist;
     private int currentTrackIndex = 0;
     private bool isPlaying = false;
+
+    private float previousVolume;
+    private Slider volumeSlider;
+    private Toggle muteToggle;
 
     void Awake()
     {
@@ -167,6 +172,54 @@ public class MusicManager : MonoBehaviour
         {
             Debug.LogError("Invalid index or playlist is empty.");
         }
+    }
+
+
+    public void FindUIElements()
+    {
+        MusicVolumeSlider volumeSliderScript = FindObjectOfType<MusicVolumeSlider>();
+        if (volumeSliderScript != null)
+        {
+            Debug.Log("Music Volume Slider is FOUND!");
+            volumeSlider = volumeSliderScript.GetSlider();
+            volumeSlider.onValueChanged.AddListener(OnVolumeSliderChanged);
+        }
+        else { Debug.Log("Music Volume Slider is NOT FOUND!"); }
+
+        MusicMuteToggle muteToggleScript = FindObjectOfType<MusicMuteToggle>();
+        if (muteToggleScript != null)
+        {
+            Debug.Log("Music Mute Toggle is FOUND!");
+            muteToggle = muteToggleScript.GetToggle();
+            muteToggle.onValueChanged.AddListener(OnMuteToggleChanged);
+        }
+        else { Debug.Log("Music Mute Toggle is NOT FOUND!"); }
+    }
+
+
+    public void OnVolumeSliderChanged(float volume)
+    {
+        SetVolume(volume);
+    }
+
+
+    public void OnMuteToggleChanged(bool isMuted)
+    {
+        if (isMuted)
+        {
+            previousVolume = audioSource.volume;
+            SetVolume(0);
+        }
+        else
+        {
+            SetVolume(previousVolume);
+        }
+    }
+
+    // Call this method when changing scenes to update the UI elements
+    public void UpdateUIElements()
+    {
+        FindUIElements();
     }
 
     /// <summary>

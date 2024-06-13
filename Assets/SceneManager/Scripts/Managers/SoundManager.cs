@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -25,6 +25,10 @@ public class SoundManager : MonoBehaviour
 
     private Dictionary<string, AudioClip> soundEffectDictionary = new Dictionary<string, AudioClip>();
     private int oneShotChannelCount = 5;  // Number of one-shot channels
+
+    private float previousVolume;
+    private Slider volumeSlider;
+    private Toggle muteToggle;
 
     void Awake()
     {
@@ -141,6 +145,48 @@ public class SoundManager : MonoBehaviour
             }
         }
         return null;  // All sources are currently in use
+    }
+
+    private void FindUIElements()
+    {
+        SoundVolumeSlider volumeSliderScript = FindObjectOfType<SoundVolumeSlider>();
+        if (volumeSliderScript != null)
+        {
+            Debug.Log("Sound Volume Slider is FOUND!");
+            volumeSlider = volumeSliderScript.GetSlider();
+            volumeSlider.onValueChanged.AddListener(OnVolumeSliderChanged);
+        } else { Debug.Log("Sound Volume Slider is NOT FOUND!"); }
+
+        SoundMuteToggle muteToggleScript = FindObjectOfType<SoundMuteToggle>();
+        if (muteToggleScript != null)
+        {
+            Debug.Log("Sound Mute Toggle is FOUND!");
+            muteToggle = muteToggleScript.GetToggle();
+            muteToggle.onValueChanged.AddListener(OnMuteToggleChanged);
+        } else { Debug.Log("Sound Mute Toggle is NOT FOUND!"); }
+    }
+
+    public void OnVolumeSliderChanged(float volume)
+    {
+        SetVolume(volume);
+    }
+
+    public void OnMuteToggleChanged(bool isMuted)
+    {
+        if (isMuted)
+        {
+            previousVolume = loopingSource.volume;
+            SetVolume(0);
+        }
+        else
+        {
+            SetVolume(previousVolume);
+        }
+    }
+
+    public void UpdateUIElements()
+    {
+        FindUIElements();
     }
 
     private void SingletonCheck()
