@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour
             isPauseOn = !isPauseOn;
         }
 
-        if (Input.GetButtonDown("Console"))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             isConsoleOn = !isConsoleOn;
         }
@@ -46,6 +46,7 @@ public class MenuController : MonoBehaviour
             LockCursor();
             Time.timeScale = 1f;
         }
+
     }
 
     public void ResumeGame()
