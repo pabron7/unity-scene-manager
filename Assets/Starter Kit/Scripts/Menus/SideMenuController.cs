@@ -27,7 +27,10 @@ public class SideMenuController : MonoBehaviour
             optionsContent.SetActive(false);
         }
 
-        closeButton.onClick.AddListener(CloseSideMenu);
+        if (closeButton != null)
+        {
+            closeButton.onClick.AddListener(CloseSideMenu);
+        }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
