@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{3CB91582-A6A7-1A03-CC15-E6D7A3B319F9}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Starter Kit/Scripts/Menus/SideMenuController.cs">
+    <Files>
+      <File FileName="Assets/Starter Kit/Scripts/Menus/MenuController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Starter Kit/Scripts/Menus/Console.cs" Line="1" Column="1" />
+      <File FileName="Assets/Starter Kit/Scripts/Menus/SideMenuController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="unity-game-manager" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Starter Kit" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="Menus" expanded="True">
+                    <Node name="SideMenuController.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="87b43cc2-30b6-4c5c-9335-70151ec5a9de" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
