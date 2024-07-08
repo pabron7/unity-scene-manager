@@ -1,4 +1,4 @@
-# Scene Manager
+# Unity Starter Kit
 A reusable scene manager for Unity that can kick-start the prototyping process. Editable with ease.
 
 ***
