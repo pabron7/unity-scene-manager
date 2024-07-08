@@ -4,8 +4,13 @@ A reusable scene manager for Unity that can kick-start the prototyping process. 
 ***
 ### FEATURES
 * Switch between scenes
-* Asynchronous loading option
-* Comes with a simple start menu with a start button
+* Asynchronous scene loading option
+* Music & Sound Managers
+* Options Menu with volume sliders and mute buttons
+* Cheat Menu  (O Key triggers)
+* Pause Menu  (Escape Key triggers)
+* Selectable Levels Scene
+* Credits & Controls Displayer
 ---
 
 ### INSTRUCTIONS
